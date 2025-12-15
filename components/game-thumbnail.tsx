@@ -1,13 +1,20 @@
 import Image from "next/image"
+import { cn } from "@/lib/utils"
 
 interface GameThumbnailProps {
   image: string
   title: string
+  className?: string
 }
 
-export function GameThumbnail({ image, title }: GameThumbnailProps) {
+export function GameThumbnail({ image, title, className }: GameThumbnailProps) {
   return (
-    <div className="relative w-24 h-32 rounded-lg overflow-hidden flex-shrink-0 group cursor-pointer">
+    <div
+      className={cn(
+        "relative w-24 h-32 rounded-lg overflow-hidden shrink-0 group cursor-pointer",
+        className,
+      )}
+    >
       <Image
         src={image || "/placeholder.svg"}
         alt={title}

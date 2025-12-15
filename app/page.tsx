@@ -4,6 +4,7 @@ import { GameShowcase } from "@/components/game-showcase"
 import { GameInfoSection } from "@/components/game-info-section"
 import { GameThumbnail } from "@/components/game-thumbnail"
 import { Footer } from "@/components/footer"
+import { HeroRotator } from "@/components/hero-rotator"
 
 export default function HomePage() {
   const exploreGames = [
@@ -21,13 +22,8 @@ export default function HomePage() {
 
       {/* Hero Section - Burn Point */}
       <section className="pt-24 pb-8 px-4">
-        <div className="container mx-auto max-w-md">
-          <GameCard
-            title="Own the Drift"
-            subtitle="BURN POINT"
-            image="/images/hero-drift.png"
-            logo="/images/burn-point-logo.png"
-          />
+        <div className="container mx-auto max-w-sm">
+          <HeroRotator />
         </div>
       </section>
 

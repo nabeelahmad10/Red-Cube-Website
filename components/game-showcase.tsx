@@ -1,4 +1,4 @@
-import { GameThumbnail } from "./game-thumbnail"
+import { GameThumbnail } from "@/components/game-thumbnail"
 
 const games = [
   { title: "Game 1", image: "/action-game-cover-1.jpg" },
@@ -12,34 +12,47 @@ const games = [
 ]
 
 export function GameShowcase() {
+  const collage = [...games, ...games, ...games]
+
   return (
     <section className="py-12 px-4">
-      <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-white mb-8 text-balance">
-          Committed to
-          <br />
-          Entertainment.
-        </h2>
+      <div className="container mx-auto max-w-md">
+        <div className="flex items-start justify-between gap-6 min-w-0">
+          <h2 className="text-3xl font-bold text-white text-balance leading-tight flex-1 min-w-0">
+            Committed to
+            <br />
+            Entertainment.
+          </h2>
 
-        {/* First Row */}
-        <div className="flex gap-3 mb-3 overflow-x-auto pb-2 scrollbar-hide">
-          {games.slice(0, 4).map((game, idx) => (
-            <GameThumbnail key={idx} {...game} />
-          ))}
-        </div>
-
-        {/* Second Row */}
-        <div className="flex gap-3 mb-3 overflow-x-auto pb-2 scrollbar-hide">
-          {games.slice(4, 8).map((game, idx) => (
-            <GameThumbnail key={idx} {...game} />
-          ))}
-        </div>
-
-        {/* Third Row */}
-        <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
-          {games.slice(0, 4).map((game, idx) => (
-            <GameThumbnail key={idx} {...game} />
-          ))}
+          <div className="shrink-0 w-48">
+            <div className="flex flex-col gap-2 items-end">
+              <div className="flex gap-2 justify-end">
+                {collage.slice(0, 4).map((game, idx) => (
+                  <GameThumbnail key={`r1-${idx}`} image={game.image} title={game.title} className="w-8 h-8 rounded-md" />
+                ))}
+              </div>
+              <div className="flex gap-2 justify-end">
+                {collage.slice(4, 10).map((game, idx) => (
+                  <GameThumbnail
+                    key={`r2-${idx}`}
+                    image={game.image}
+                    title={game.title}
+                    className="w-8 h-8 rounded-md"
+                  />
+                ))}
+              </div>
+              <div className="flex gap-2 justify-end">
+                {collage.slice(10, 14).map((game, idx) => (
+                  <GameThumbnail
+                    key={`r3-${idx}`}
+                    image={game.image}
+                    title={game.title}
+                    className="w-8 h-8 rounded-md"
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
